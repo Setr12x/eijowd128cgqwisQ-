@@ -1,12 +1,8 @@
-name: SSH via Serveo
+name: SSH via tmate
 on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up SSH
-        run: |
-          echo "runner:password123" | sudo chpasswd
-          echo "=== СКОПИРУЙ ЭТУ СТРОКУ ДЛЯ ПОДКЛЮЧЕНИЯ ==="
-          ssh -o StrictHostKeyChecking=no -R 22:localhost:22 serveo.net &
-          sleep 1800
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
